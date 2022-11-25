@@ -60,14 +60,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		for (Employee employee : emp) {
 
 			int length = employee.getEmployeeCode().length();
-			String employeeCode = String.valueOf(OTP(length));
+			String employeeCode = String.valueOf(EmployeeCode(length));
 			employee.setEmployeeCode(employeeCode);
 			employeeDao.updateEmployeeCode(employee);
 		}
 
 	}
 
-	static char[] OTP(int len) {
+	static char[] EmployeeCode(int len) {
 		// Using numeric values
 		String numbers = "0123456789";
 
