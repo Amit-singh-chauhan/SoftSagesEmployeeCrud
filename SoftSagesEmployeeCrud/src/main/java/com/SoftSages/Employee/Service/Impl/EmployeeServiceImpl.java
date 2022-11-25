@@ -55,14 +55,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void ChangeEmployeeCode() {
 
 		logger.info("Every 2 Minutes Update All Employee Code");
-		List<Employee> emp = employeeDao.findAllEmployee();
+		try {
+			List<Employee> emp = employeeDao.findAllEmployee();
 
-		for (Employee employee : emp) {
+			for (Employee employee : emp) {
 
-			int length = employee.getEmployeeCode().length();
-			String employeeCode = String.valueOf(EmployeeCode(length));
-			employee.setEmployeeCode(employeeCode);
-			employeeDao.updateEmployeeCode(employee);
+				int length = employee.getEmployeeCode().length();
+				String employeeCode = String.valueOf(EmployeeCode(length));
+				employee.setEmployeeCode(employeeCode);
+				employeeDao.updateEmployeeCode(employee);
+			}
+		} catch (Exception e) {
+			System.out.println("Employee DB Table Not Created");
+
 		}
 
 	}
